@@ -1,3 +1,15 @@
 {
-  "hero-bay": { "narrow": { "aspect": 1.3333, "focusX": 0.5, "focusY": 0.5, "scale": 1.2 } }
+  "hero-bay": {
+    "remote": "https://commons.wikimedia.org/wiki/Special:FilePath/Car_repair_in_an_auto_shop_with_tools_and_equipment_present_on_the_floor_and_a_partially_disassembled_vehicle_on_a_lift.jpg?width=3000",
+    "credit": { "author": "Shixart1985", "license": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Car_repair_in_an_auto_shop_with_tools_and_equipment_present_on_the_floor_and_a_partially_disassembled_vehicle_on_a_lift.jpg" },
+    "narrow": { "aspect": 0.8, "focusX": 0.52, "focusY": 0.5 }
+  },
+  "mechanic": {
+    "remote": "https://commons.wikimedia.org/wiki/Special:FilePath/Car_mechanic_worker_repairing_suspension_of_lifted_automobile_at_auto_repair_garage_shop.jpg?width=2000",
+    "credit": { "author": "Shixart1985", "license": "CC BY 2.0", "page": "https://commons.wikimedia.org/wiki/File:Car_mechanic_worker_repairing_suspension_of_lifted_automobile_at_auto_repair_garage_shop.jpg" }
+  },
+  "bench": {
+    "remote": "https://commons.wikimedia.org/wiki/Special:FilePath/Railway_workshop_museum_exhibition_in_Ljubljana,_Slovenia.jpg?width=3000",
+    "credit": { "author": "Petar Milošević", "license": "CC BY-SA 4.0", "page": "https://commons.wikimedia.org/wiki/File:Railway_workshop_museum_exhibition_in_Ljubljana,_Slovenia.jpg" }
+  }
 }

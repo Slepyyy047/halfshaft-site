@@ -50,5 +50,5 @@ export function estimateText(e: Estimate, fmt: (n: number) => string, amount: (n
   if (!e.priced.length) return "";
   if (e.open) return `від ${fmt(e.min)}`;
   if (e.min === e.max) return fmt(e.min);
-  return `${amount(e.min)}–${fmt(e.max)}`;
+  return `${amount(e.min)}-${fmt(e.max)}`;
 }

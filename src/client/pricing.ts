@@ -72,7 +72,7 @@ function apply({ animate = true } = {}) {
     emptyText.textContent =
       (q ? `За запитом «${q}»` : "У цьому розділі") +
       (catName ? ` у розділі «${catName}»` : "") +
-      " нічого немає. Спробуйте інше слово, скиньте фільтри або опишіть проблему в заявці — почнемо з огляду.";
+      " нічого немає. Спробуйте інше слово, скиньте фільтри або опишіть проблему в заявці, і ми почнемо з огляду.";
   }
   status.textContent = q || cat !== "all" ? `Показано ${shown} ${plural(shown, "позицію", "позиції", "позицій")} з ${rows.length}` : "";
   clearBtn.hidden = !q;
@@ -141,7 +141,7 @@ function lineHtml(item: PriceItem, qty: number, withQty: boolean) {
   const max = item.unit ? unitMaxQty[item.unit] : undefined;
   const p = item.price;
   const lineTotal =
-    p.kind === "fixed" ? uah(p.amount * qty) : p.kind === "from" ? `від ${uah(p.amount * qty)}` : p.kind === "range" ? `${formatAmount(p.min * qty)}–${uah(p.max * qty)}` : "";
+    p.kind === "fixed" ? uah(p.amount * qty) : p.kind === "from" ? `від ${uah(p.amount * qty)}` : p.kind === "range" ? `${formatAmount(p.min * qty)}-${uah(p.max * qty)}` : "";
   const qtyHtml =
     withQty && max
       ? `<div class="qty" role="group" aria-label="Кількість: ${esc(item.name)}">
@@ -188,7 +188,7 @@ function renderDock({ bump = false } = {}) {
   dockList.hidden = !est.priced.length;
   dockQuotes.hidden = !est.quoted.length;
   dockQuoteList.innerHTML = est.quoted.map((l) => lineHtml(l.item, l.qty, false)).join("");
-  dockSum.textContent = est.priced.length ? sumText : "—";
+  dockSum.textContent = est.priced.length ? sumText : "";
   if (bump && !reduceMotion()) {
     dockCount.classList.remove("is-bump");
     void dockCount.offsetWidth;

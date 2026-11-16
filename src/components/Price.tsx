@@ -24,7 +24,7 @@ export function PriceTag({ price }: { price: PriceT }) {
     case "range":
       return (
         <span className="price price--range num" title={label}>
-          {formatAmount(price.min)}–{formatAmount(price.max)}&nbsp;₴
+          {formatAmount(price.min)}-{formatAmount(price.max)}&nbsp;₴
         </span>
       );
     case "quote":
@@ -104,7 +104,7 @@ export function PriceLegend() {
         <dd>мінімум, точну суму назвемо після огляду</dd>
       </div>
       <div>
-        <dt><span className="price price--range num">900–1&nbsp;800&nbsp;₴</span></dt>
+        <dt><span className="price price--range num">900-1&nbsp;800&nbsp;₴</span></dt>
         <dd>залежить від моделі, назвемо за VIN</dd>
       </div>
       <div>

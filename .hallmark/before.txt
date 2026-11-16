@@ -1,0 +1,178 @@
+/tmp/before-site/assets/site.488886bd63.css
+  FAIL 7a :1 pure #fff: color: #fff (.add-btn[aria-pressed=true]) | fix: Tint the base toward the anchor hue
+  FAIL 7a :1 pure #fff: background: #fff (.paper input:focus,.paper select:focus,.paper textarea:focus)
+  FAIL 7a :1 pure #fff: background: #fff (.mode__card:before)
+  FAIL 7a :1 pure #fff: background: #fff (.mode__option input:checked+.mode__card)
+  FAIL 7a :1 pure #fff: color: #fff (.result__mark)
+  FAIL 20 :1 no Hallmark stamp on the first non-empty line of any CSS | fix: The stamp comment is line 1 of the CSS; only @charset may precede it
+  FAIL 34 :1 overflow-x: hidden on body.is-locked (breaks sticky) | fix: Use overflow-x: clip on both html and body, never hidden
+  FAIL 39a :1 disabled via opacity alone on .btn[disabled],.btn[aria-disabled=true] | fix: Three disabled channels: fill, ink and cursor, plus the disabled attribute
+  FAIL 39a :1 disabled via opacity alone on .qty__btn:disabled
+  FAIL 48 :1 colour literal #2b3034 outside tokens (--btn-bg on .paper .btn--primary:hover) | fix: Lift the value into the token block
+  FAIL 48 :1 colour literal #2b3034 outside tokens (--btn-bd on .paper .btn--primary:hover)
+  FAIL 48 :1 colour literal #121517eb outside tokens (background on .site-header)
+  FAIL 48 :1 colour literal #121517f7 outside tokens (background on .site-header.is-scrolled)
+  FAIL 48 :1 colour literal #0608099e outside tokens (background on .drawer__backdrop)
+  FAIL 48 :1 colour literal #00000059 outside tokens (box-shadow on .drawer__panel)
+  FAIL 48 :1 colour literal #1f24278c outside tokens (background on .plate)
+  FAIL 48 :1 colour literal rgba(11,110,101,.06) outside tokens (background on .price-row.is-selected)
+  FAIL 48 :1 colour literal #fff outside tokens (color on .add-btn[aria-pressed=true])
+  FAIL 48 :1 colour literal #c4beb1 outside tokens (border on .paper input[type=text],.pape…)
+  FAIL 48 :1 colour literal #f8f6f1 outside tokens (background on .paper input[type=text],.pape…)
+  FAIL 48 :1 colour literal #8a8d8e outside tokens (color on .paper input::placeholder,.pa…)
+  FAIL 48 :1 colour literal #9c968a outside tokens (border-color on .paper input:hover,.paper sel…)
+  FAIL 48 :1 colour literal #0b6e6538 outside tokens (box-shadow on .paper input:focus,.paper sel…)
+  FAIL 48 :1 colour literal #fff outside tokens (background on .paper input:focus,.paper sel…)
+  FAIL 48 :1 colour literal #fdf3f1 outside tokens (background on .paper .is-invalid input,.pap…)
+  FAIL 48 :1 colour literal #c4beb1 outside tokens (border on .check-chip span)
+  FAIL 48 :1 colour literal #f8f6f1 outside tokens (background on .check-chip span)
+  FAIL 48 :1 colour literal #9c968a outside tokens (border-color on .check-chip:hover span)
+  FAIL 48 :1 colour literal #f6f4ee outside tokens (background on .notice)
+  FAIL 48 :1 colour literal #e7ece9 outside tokens (background on .notice--warn)
+  FAIL 48 :1 colour literal #c7d3cd outside tokens (border-color on .notice--warn)
+  FAIL 48 :1 colour literal #fbeae7 outside tokens (background on .notice--error)
+  FAIL 48 :1 colour literal #e8b3aa outside tokens (border-color on .notice--error)
+  FAIL 48 :1 colour literal #7e1d16 outside tokens (color on .notice--error)
+  FAIL 48 :1 colour literal #121517f0 outside tokens (background on .cat-nav)
+  FAIL 48 :1 colour literal #ffffff05 outside tokens (background on .service-item:hover)
+  FAIL 48 :1 colour literal #121517f2 outside tokens (background on .pricing__bar)
+  FAIL 48 :1 colour literal #80878c outside tokens (color on .search__input::placeholder)
+  FAIL 48 :1 colour literal #00000073 outside tokens (box-shadow on .dock)
+  FAIL 48 :1 colour literal #c4beb1 outside tokens (border on .mode__card)
+  FAIL 48 :1 colour literal #f8f6f1 outside tokens (background on .mode__card)
+  FAIL 48 :1 colour literal #9c968a outside tokens (border on .mode__card:before)
+  FAIL 48 :1 colour literal #fff outside tokens (background on .mode__card:before)
+  FAIL 48 :1 colour literal #9c968a outside tokens (border-color on .mode__option:hover .mode__ca…)
+  FAIL 48 :1 colour literal #fff outside tokens (background on .mode__option input:checked+.…)
+  FAIL 48 :1 colour literal #fff outside tokens (box-shadow on .mode__option input:checked+.…)
+  FAIL 48 :1 colour literal #f8f6f1 outside tokens (background on .selection-carry)
+  FAIL 48 :1 colour literal #c4beb1 outside tokens (border on .slot span)
+  FAIL 48 :1 colour literal #f8f6f1 outside tokens (background on .slot span)
+  FAIL 48 :1 colour literal #9c968a outside tokens (border-color on .slot:hover span)
+  FAIL 48 :1 colour literal #fff outside tokens (color on .result__mark)
+  FAIL 62 :1 .reveal-pending is hidden at rest (opacity: 0) and depends on a script to appear | fix: Visible by default: scope the hidden state under a .js class the script adds, or animate from visible with @starting-style
+  FAIL 67 :1 .mono-input: uppercase tracked 0.06em in a label role | fix: Labels, captions, table heads, nav links and meta are the body face (or the theme's label face), a step smaller, sentence case, untracked
+  REFLEX 24b :1 padding: 10px 16px (off the 4px scale) on .skip-link | fix: Use the 4px spacing scale
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .section-head
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .btn
+  REFLEX 24b :1 padding: 12px 22px (off the 4px scale) on .btn
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .text-btn
+  REFLEX 24b :1 padding: 0 14px (off the 4px scale) on .site-nav a
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .drawer__foot
+  REFLEX 24b :1 padding: 9px 0 (off the 4px scale) on .hours>div
+  REFLEX 24b :1 padding: 5px 0 (off the 4px scale) on .hours--compact>div
+  REFLEX 24b :1 padding: 14px 16px (off the 4px scale) on .plate__row
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .plate dt
+  REFLEX 24b :1 padding: 2px 9px (off the 4px scale) on .tag
+  REFLEX 24b :1 padding: 3px 11px (off the 4px scale) on .price--quote
+  REFLEX 24b :1 gap: 10px 20px (off the 4px scale) on .legend
+  REFLEX 24b :1 padding: 18px 20px (off the 4px scale) on .page-head__grid .legend
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .sheet__head
+  REFLEX 24b :1 gap: 6px 20px (off the 4px scale) on .price-row
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .price-row__main
+  REFLEX 24b :1 gap: 6px 8px (off the 4px scale) on .price-row__meta
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .add-btn
+  REFLEX 24b :1 padding: 0 14px (off the 4px scale) on .add-btn
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .cta-band__text
+  REFLEX 24b :1 margin: 0 10px (off the 4px scale) on .crumbs li+li:before
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .bullets
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .checklist
+  REFLEX 24b :1 margin-top: 3px (off the 4px scale) on .checklist .icon
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .contact-actions
+  REFLEX 24b :1 margin: 0 0 22px (off the 4px scale) on .field
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .field__error
+  REFLEX 24b :1 padding: 12px 14px (off the 4px scale) on .paper input[type=text],.paper input[type=tel],.paper input[type=date],.paper…
+  REFLEX 24b :1 gap: 0 18px (off the 4px scale) on .grid-2
+  REFLEX 24b :1 padding: 9px 16px (off the 4px scale) on .check-chip span
+  REFLEX 24b :1 padding: 14px 16px (off the 4px scale) on .notice
+  REFLEX 24b :1 margin: 0 0 22px (off the 4px scale) on .notice
+  REFLEX 24b :1 gap: 18px (off the 4px scale) on .page-head .wrap
+  REFLEX 24b :1 gap: 18px (off the 4px scale) on .page-head__grid>div
+  REFLEX 24b :1 gap: 22px (off the 4px scale) on .hero__text
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .cat-tile__link
+  REFLEX 24b :1 margin-bottom: 6px (off the 4px scale) on .cat-tile__media
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .symptoms__head
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .finder
+  REFLEX 24b :1 padding: 10px 0 (off the 4px scale) on .cat-nav__list
+  REFLEX 24b :1 gap: 6px 20px (off the 4px scale) on .service-item
+  REFLEX 24b :1 gap: 18px (off the 4px scale) on .svc-section
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .related__item
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .pricing__bar-inner
+  REFLEX 24b :1 padding: 10px 46px 10px 44px (off the 4px scale) on .search__input
+  REFLEX 24b :1 margin-bottom: 10px (off the 4px scale) on .pricing__status
+  REFLEX 24b :1 padding-top: 22px (off the 4px scale) on .price-group
+  REFLEX 24b :1 margin-top: 6px (off the 4px scale) on .price-group+.price-group
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .empty
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .dock__bar
+  REFLEX 24b :1 padding: 10px 10px 10px 12px (off the 4px scale) on .dock__bar
+  REFLEX 24b :1 padding: 0 6px 0 0 (off the 4px scale) on .dock__toggle
+  REFLEX 24b :1 padding: 14px 0 2px (off the 4px scale) on .dock__subtitle
+  REFLEX 24b :1 gap: 4px 10px (off the 4px scale) on .dock-line
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .dock-line__main
+  REFLEX 24b :1 padding: 14px 0 4px (off the 4px scale) on .dock__sum
+  REFLEX 24b :1 padding: 14px 0 12px (off the 4px scale) on .dock__actions
+  REFLEX 24b :1 margin-bottom: 22px (off the 4px scale) on .step__title
+  REFLEX 24b :1 margin-top: 30px (off the 4px scale) on .step__nav
+  REFLEX 24b :1 padding-top: 22px (off the 4px scale) on .step__nav
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .mode
+  REFLEX 24b :1 padding: 16px 18px 16px 48px (off the 4px scale) on .mode__card
+  REFLEX 24b :1 padding: 16px 18px (off the 4px scale) on .price-hint
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .price-hint
+  REFLEX 24b :1 margin-bottom: 22px (off the 4px scale) on .selection-carry
+  REFLEX 24b :1 padding: 16px 18px (off the 4px scale) on .selection-carry
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .selection-carry
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .carry-item
+  REFLEX 24b :1 padding: 6px 0 (off the 4px scale) on .carry-item
+  REFLEX 24b :1 margin-bottom: 22px (off the 4px scale) on .review
+  REFLEX 24b :1 gap: 6px (off the 4px scale) on .review__block
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .result
+  REFLEX 24b :1 margin-bottom: 6px (off the 4px scale) on .saved__title
+  REFLEX 24b :1 padding: 16px 18px (off the 4px scale) on .overview__summary
+  REFLEX 24b :1 padding: 0 18px (off the 4px scale) on .overview__list
+  REFLEX 24b :1 padding: 14px 18px 18px (off the 4px scale) on .overview__note
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .policy
+  REFLEX 24b :1 padding: 26px 0 (off the 4px scale) on .policy
+  REFLEX 24b :1 padding-top: 18px (off the 4px scale) on .contacts__book
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .contacts__book
+  REFLEX 24b :1 gap: 18px (off the 4px scale) on .contacts__info
+  REFLEX 24b :1 margin-top: 22px (off the 4px scale) on .contacts__info .h3:not(:first-child)
+  REFLEX 24b :1 margin-top: 3px (off the 4px scale) on .contacts__address .icon
+  REFLEX 24b :1 gap: 10px (off the 4px scale) on .contact-methods
+  REFLEX 24b :1 padding: 16px 18px (off the 4px scale) on .contact-method
+  REFLEX 24b :1 gap: 14px (off the 4px scale) on .section-head>div
+  REFLEX 24b :1 padding: 14px 0 (off the 4px scale) on .cat-tile__link
+  WARN 10b :1 transitioning padding on .symptom | fix: Animate transform or opacity instead
+  WARN 11 :1 image transforms on hover (.cat-tile__link:hover .cat-tile__media img) | fix: Imagery sits still; give the container the feedback
+  WARN 29 :1 glass panel: backdrop-filter blur over a translucent black on .site-header | fix: Solid or grained surface; elevation by lightness
+  WARN 29 :1 glass panel: backdrop-filter blur over a translucent black on .cat-nav
+  WARN 29 :1 glass panel: backdrop-filter blur over a translucent black on .pricing__bar
+  WARN 41 :1 dark surface (L 22%) on .section--band sets no text colour | fix: Swap text to paper in the same rule
+  WARN 41 :1 dark surface (L 22%) on .drawer__panel sets no text colour
+  WARN 41 :1 dark surface (L 19%) on .site-footer sets no text colour
+  WARN 41 :1 dark surface (L 22%) on .cta-band sets no text colour
+  WARN 41 :1 dark surface (L 49%) on .mode__option input:checked+.mode__card:before sets no text colour
+  WARN F3 :1 no text-wrap: balance on any display head (8 head rule(s), e.g. h1,h2,h3,h4) | fix: Add text-wrap: balance to h1/h2-level heads
+  WARN F6 :1 numeric selector .price__pre at display size without tabular figures | fix: Add font-variant-numeric: tabular-nums
+  WARN F6 :1 numeric selector .price--quote at display size without tabular figures
+  WARN F6 :1 numeric selector .legend dt .price at display size without tabular figures
+  WARN F6 :1 numeric selector .price-row__note at display size without tabular figures
+  WARN F6 :1 numeric selector .price-hint__title at display size without tabular figures
+  WARN F7 :1 same container recipe on 7 selectors (.paper input[type=text], .paper input[type=tel]…...) | fix: Vary weight, radius, or fill by role; not every box is the same box
+  WARN F24 :1 a hairline border under a wide soft shadow on .drawer__panel | fix: Commit to one: a defined edge, or elevation by shadow
+/tmp/before-site/index.html
+  FAIL 19 :1 dash "—" in copy | fix: A comma, a colon, a full stop or parentheses; never a dash
+  FAIL 26a :1 no :focus-visible styling anywhere | fix: A focus ring at 3:1 or better, instant
+  FAIL 34 :1 no overflow-x: clip on html and body | fix: overflow-x: clip on both html and body
+  REFLEX 26b :1 no :active styling anywhere | fix: All eight states; guard: not a form control, no aria-disabled anywhere
+  REFLEX 26b :1 no :disabled styling anywhere
+  WARN 49 :1 long clickable label "Детальніше про правила майстерні" without nowrap | fix: Shorten the label or set nowrap
+/tmp/before-site/pricing.html
+  FAIL 19 :1 dash "—" in copy
+  FAIL 26a :1 no :focus-visible styling anywhere
+  FAIL 34 :1 no overflow-x: clip on html and body
+  REFLEX 26b :1 no :active styling anywhere
+  REFLEX 26b :1 no :disabled styling anywhere
+  WARN 49 :1 long clickable label "Кондиціонер і охолодження 8" without nowrap
+  WARN 49 :1 long clickable label "Описати проблему в заявці" without nowrap
+  WARN 49 :1 long clickable label "Записатися з цими роботами" without nowrap
+sloplint: 59 FAIL, 93 REFLEX, 22 WARN across 3 file(s).

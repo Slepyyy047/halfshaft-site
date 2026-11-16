@@ -1,7 +1,8 @@
 import { h } from "../lib/jsx";
 import { Layout } from "../components/Layout";
-import { Picture } from "../components/Picture";
+import { PriceTag } from "../components/Price";
 import { PriceRow } from "../components/Price";
+import { unitLabel } from "../data/prices";
 import { Breadcrumbs, CtaBand } from "../components/Blocks";
 import { Icon } from "../components/Icon";
 import { business } from "../data/business";
@@ -9,7 +10,7 @@ import { categoryById, serviceBySlug } from "../data/services";
 import { pricesForService } from "../data/prices";
 import type { Service } from "../data/types";
 import { startingPrice } from "./services";
-import { priceText } from "../lib/format";
+import { priceText, plural } from "../lib/format";
 
 export function ServicePage({ service }: { service: Service }) {
   const cat = categoryById(service.category);
@@ -38,7 +39,7 @@ export function ServicePage({ service }: { service: Service }) {
     >
       <article>
         <header className="svc-head">
-          <div className="wrap svc-head__grid">
+          <div className="container svc-head__grid">
             <div className="svc-head__text">
               <Breadcrumbs
                 items={[
@@ -47,29 +48,32 @@ export function ServicePage({ service }: { service: Service }) {
                   { label: service.name },
                 ]}
               />
-              <h1 className="display-2">{service.name}</h1>
+              <h1>{service.name}</h1>
               <p className="lead">{service.lead}</p>
               <div className="actions">
                 <a className="btn btn--primary" href={bookHref}>
                   Записатися на цю послугу
-                </a>
-                <a className="btn" href="#price">
-                  Ціна
                 </a>
               </div>
               <p className="svc-head__duration small muted">
                 <Icon name="clock" /> {service.duration}
               </p>
             </div>
-            <figure className="svc-head__media frame">
-              <Picture name={service.image ?? cat.image} alt={`${cat.name}: ілюстрація до послуги «${service.name}»`} sizes="(min-width: 900px) 45vw, 100vw" priority />
-            </figure>
+            <aside className="plate svc-plate" aria-label="Ціна роботи">
+              <p className="svc-plate__label">{rows.length > 1 ? "Робота, найменша ціна" : "Робота"}</p>
+              <p className="svc-plate__figure">{sp ? <PriceTag price={sp} /> : null}</p>
+              {rows.length === 1 && rows[0].unit ? <p className="small">{unitLabel[rows[0].unit]}</p> : null}
+              <p className="svc-plate__basis small">{service.pricingBasis}</p>
+              <a className="text-link" href="#price">
+                {rows.length > 1 ? `Усі ${rows.length} ${plural(rows.length, "позиція", "позиції", "позицій")} прайсу` : "Деталі ціни"}
+              </a>
+            </aside>
           </div>
         </header>
 
-        <div className="wrap svc-body">
+        <div className="container svc-body">
           <section className="svc-section" aria-labelledby="reasons-title">
-            <h2 className="h3" id="reasons-title">
+            <h2 id="reasons-title">
               Коли до нас звертаються
             </h2>
             <ul className="bullets">
@@ -80,23 +84,22 @@ export function ServicePage({ service }: { service: Service }) {
           </section>
 
           <section className="svc-section" aria-labelledby="checks-title">
-            <h2 className="h3" id="checks-title">
+            <h2 id="checks-title">
               Що робимо
             </h2>
-            <ul role="list" className="checklist">
+            <ol role="list" className="checklist">
               {service.checks.map((c) => (
                 <li>
-                  <Icon name="check" />
                   <span>{c}</span>
                 </li>
               ))}
-            </ul>
+            </ol>
           </section>
 
           <section className="svc-section svc-price" id="price" aria-labelledby="price-title">
-            <div className="paper sheet">
+            <div className="plate sheet">
               <div className="sheet__head">
-                <h2 className="h3" id="price-title">
+                <h2 id="price-title">
                   Ціна
                 </h2>
                 <p className="small">{service.pricingBasis}</p>
@@ -109,10 +112,10 @@ export function ServicePage({ service }: { service: Service }) {
               <div className="sheet__foot">
                 {service.partsNote ? <p className="small">{service.partsNote}</p> : null}
                 <div className="actions">
-                  <a className="btn btn--primary" href={bookHref}>
+                  <a className="btn" href={bookHref}>
                     Записатися на цю послугу
                   </a>
-                  <a className="btn" href={`/pricing?cat=${cat.id}`}>
+                  <a className="text-link" href={`/pricing?cat=${cat.id}`}>
                     Усі ціни розділу
                   </a>
                 </div>
@@ -121,7 +124,7 @@ export function ServicePage({ service }: { service: Service }) {
           </section>
 
           <section className="svc-section svc-note" aria-labelledby="diag-title">
-            <h2 className="h3" id="diag-title">
+            <h2 id="diag-title">
               Якщо спершу потрібна діагностика
             </h2>
             <p>{service.diagnosisFirst}</p>
@@ -130,9 +133,9 @@ export function ServicePage({ service }: { service: Service }) {
         </div>
 
         {related.length ? (
-          <section className="section section--tight related" aria-labelledby="rel-title">
-            <div className="wrap">
-              <h2 className="h3" id="rel-title">
+          <section className="related" aria-labelledby="rel-title">
+            <div className="container">
+              <h2 id="rel-title">
                 Часто разом із цим
               </h2>
               <ul role="list" className="related__list">
@@ -143,7 +146,7 @@ export function ServicePage({ service }: { service: Service }) {
                       <a className="related__item" href={`/services/${r.slug}`}>
                         <span className="related__name">{r.name}</span>
                         <span className="related__short small muted">{r.short}</span>
-                        {rp ? <span className="related__price small num">{priceText(rp)}</span> : null}
+                        {rp ? <span className="related__price">{priceText(rp)}</span> : null}
                       </a>
                     </li>
                   );

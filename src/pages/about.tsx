@@ -17,8 +17,8 @@ const policies = [
     text: "Кошторис письмовий: робота окремо, кожна запчастина окремо, з виробником і ціною. Можна обрати між оригіналом і перевіреним аналогом.",
   },
   {
-    title: "Додаткові роботи — лише з вашої згоди",
-    text: "Якщо під час ремонту знайдеться ще щось, зупиняємось, надсилаємо фото й нову суму. Не можете відповісти — чекаємо, а не робимо на свій розсуд.",
+    title: "Додаткові роботи лише з вашої згоди",
+    text: "Якщо під час ремонту знайдеться ще щось, зупиняємось, надсилаємо фото й нову суму. Не можете відповісти: чекаємо, а не робимо на свій розсуд.",
   },
   {
     title: "Ваші запчастини теж підходять",
@@ -35,7 +35,7 @@ const facts = [
   "3D-стенд розвалу-сходження",
   "Окрема лінія шиномонтажу з балансувальним верстатом",
   "Станція обслуговування кондиціонерів для R134a і R1234yf",
-  "Механік з допуском до робіт з високою напругою — для гібридів",
+  "Механік з допуском до робіт з високою напругою: для гібридів",
   "Зона очікування з вікном у бокс",
 ];
 
@@ -48,29 +48,43 @@ export function AboutPage() {
       section="about"
     >
       <section className="page-head">
-        <div className="wrap about-head">
-          <h1 className="display-2">Майстерня, де ціну називають до ремонту</h1>
-          <div className="about-head__text prose">
+        <div className="container about-head">
+          <h1>Майстерня, де ціну називають до ремонту</h1>
+          <div className="about-head__text">
             <p className="lead">
-              Halfshaft — невелика незалежна майстерня у Вінниці на чотири пости. Обслуговуємо легкові авто різних марок, а з гібридами працюємо окремо й обережно.
+              Halfshaft: невелика незалежна майстерня у Вінниці на чотири пости. Обслуговуємо легкові авто різних марок, а з гібридами працюємо окремо й обережно.
             </p>
-            <p className="muted">
+            <p>
               Ми не продаємо ремонт «про всяк випадок». Наше правило просте: спершу знаходимо причину і показуємо її вам, потім називаємо ціну, і лише після цього беремо ключ до рук.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="wrap about-photo">
-        <figure className="frame about-photo__frame">
-          <Picture name="workshop" alt="Верстак майстерні: стенд з ключами й викрутками, планшет з аркушем прийому авто" sizes="100vw" priority />
-        </figure>
+      <section className="container about-photo" aria-label="Майстерня">
+        <Picture
+          name="bench"
+          className="about-photo__frame"
+          alt="Верстак під вікном майстерні з розкладеними гайковими ключами"
+          slotAlt="Ваш верстак або бокс при денному світлі"
+          sizes="(min-width: 60rem) 64vw, 100vw"
+          focus="50% 55%"
+          priority
+        />
+        <Picture
+          name="mechanic"
+          className="about-photo__frame--tall"
+          alt="Механік підпирає стійкою підвіску піднятого авто"
+          slotAlt="Механік вашої майстерні за роботою"
+          sizes="(min-width: 60rem) 30vw, 100vw"
+          focus="50% 40%"
+        />
       </section>
 
       <section className="section" aria-labelledby="rules-title">
-        <div className="wrap">
+        <div className="container">
           <div className="section-head">
-            <h2 className="h2" id="rules-title">
+            <h2 id="rules-title">
               Правила, за якими працюємо
             </h2>
             <p className="lead">Вони однакові для заміни оливи й капітального ремонту.</p>
@@ -78,17 +92,17 @@ export function AboutPage() {
           <ul role="list" className="policies">
             {policies.map((p) => (
               <li className="policy">
-                <h3 className="h3">{p.title}</h3>
-                <p className="muted">{p.text}</p>
+                <h3>{p.title}</h3>
+                <p>{p.text}</p>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="section section--band" aria-labelledby="facts-title">
-        <div className="wrap facts">
-          <h2 className="h2" id="facts-title">
+      <section className="section band--ink" aria-labelledby="facts-title">
+        <div className="container facts">
+          <h2 id="facts-title">
             Що є в майстерні
           </h2>
           <ul role="list" className="facts__list">
@@ -99,7 +113,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      <CtaBand title="Приїжджайте на огляд" text="Оберіть послугу або опишіть симптом — запропонуйте зручний час, а ми підготуємо пост." />
+      <CtaBand title="Приїжджайте на огляд" text="Оберіть послугу або опишіть симптом, запропонуйте зручний час, а ми підготуємо пост." />
     </Layout>
   );
 }

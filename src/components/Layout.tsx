@@ -1,6 +1,8 @@
-import { h, raw, Fragment, type Child } from "../lib/jsx";
+import { h, raw, type Child } from "../lib/jsx";
 import { business } from "../data/business";
+import { categories } from "../data/services";
 import { assets, nav, type Section } from "../lib/site";
+import { photoCredits } from "../lib/images";
 import { Logo } from "./Logo";
 import { Icon } from "./Icon";
 import { hoursRows } from "../lib/hours";
@@ -16,9 +18,12 @@ interface LayoutProps {
   children?: Child;
 }
 
+const FONTS =
+  "https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap";
+
 export function Layout({ title, description, path, section, scripts = [], jsonLd = [], noindex, children }: LayoutProps) {
   const url = business.site.url + (path === "/" ? "/" : path);
-  const fullTitle = path === "/" ? title : `${title} — ${business.name}`;
+  const fullTitle = path === "/" ? title : `${title} | ${business.name}`;
   const robots = !business.site.indexable || noindex ? "noindex, nofollow" : "index, follow";
   return (
     <html lang="uk">
@@ -29,7 +34,7 @@ export function Layout({ title, description, path, section, scripts = [], jsonLd
         <meta name="description" content={description} />
         <meta name="robots" content={robots} />
         <link rel="canonical" href={url} />
-        <meta name="theme-color" content="#121517" />
+        <meta name="theme-color" content="#a9a49c" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -44,18 +49,9 @@ export function Layout({ title, description, path, section, scripts = [], jsonLd
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        {assets.fonts === "local" ? (
-          <>
-            <link rel="preload" href="/fonts/inter-400.woff" as="font" type="font/woff" crossorigin="" />
-            <link rel="preload" href="/fonts/inter-display-800.woff" as="font" type="font/woff" crossorigin="" />
-          </>
-        ) : (
-          <>
-            <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..800&display=swap" />
-          </>
-        )}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+        <link rel="stylesheet" href={FONTS} />
         <link rel="stylesheet" href={assets.css} />
         {jsonLd.map((d) => (
           <script type="application/ld+json">{raw(JSON.stringify(d).replace(/</g, "\\u003c"))}</script>
@@ -81,31 +77,48 @@ export function Layout({ title, description, path, section, scripts = [], jsonLd
   );
 }
 
+const hoursLine = () =>
+  hoursRows(business.hours)
+    .map((r) => `${r.days} ${r.time}`)
+    .join(", ");
+
 function Header({ section }: { section: Section }) {
   return (
     <header className="site-header" data-header>
-      <div className="wrap site-header__inner">
-        <a className="site-header__logo" href="/" aria-label={`${business.name} — на головну`} aria-current={section === "home" ? "page" : undefined}>
-          <Logo />
-        </a>
-        <nav className="site-nav" aria-label="Основна навігація">
-          <ul role="list">
-            {nav.map((n) => (
-              <li>
-                <a href={n.href} aria-current={section === n.section ? "page" : undefined}>
-                  {n.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <a className="btn btn--primary btn--small site-header__cta" href="/booking" aria-current={section === "booking" ? "page" : undefined}>
-          Подати заявку
-        </a>
-        <button className="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" data-menu-open>
-          <Icon name="menu" />
-          <span className="sr-only">Відкрити меню</span>
-        </button>
+      <div className="banner">
+        <div className="container banner__inner">
+          <p className="banner__status" data-open-status role="status">
+            {hoursLine()}
+          </p>
+          <a className="banner__addr" href="/contacts#addr-title">
+            {business.address.street}, {business.address.city}
+          </a>
+        </div>
+      </div>
+      <div className="bar">
+        <div className="container bar__inner">
+          <a className="site-header__logo" href="/" aria-label={`${business.name}, на головну`} aria-current={section === "home" ? "page" : undefined}>
+            <Logo />
+          </a>
+          <nav className="site-nav" aria-label="Основна навігація">
+            <ul role="list">
+              {nav.map((n) => (
+                <li>
+                  <a href={n.href} aria-current={section === n.section ? "page" : undefined}>
+                    {n.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <a className="btn btn--small site-header__cta" href="/booking" aria-current={section === "booking" ? "page" : undefined}>
+            Подати заявку
+          </a>
+          <button className="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" data-menu-open>
+            <Icon name="menu" />
+            <span className="sr-only">Відкрити меню</span>
+          </button>
+        </div>
       </div>
     </header>
   );
@@ -120,10 +133,10 @@ function Drawer({ section }: { section: Section }) {
           <h2 className="sr-only" id="drawer-title">
             Меню
           </h2>
-          <a className="drawer__logo" href="/" aria-label={`${business.name} — на головну`} aria-current={section === "home" ? "page" : undefined}>
+          <a className="drawer__logo" href="/" aria-label={`${business.name}, на головну`} aria-current={section === "home" ? "page" : undefined}>
             <Logo />
           </a>
-          <button className="menu-btn menu-btn--close" type="button" data-drawer-close>
+          <button className="menu-btn" type="button" data-drawer-close>
             <Icon name="close" />
             <span className="sr-only">Закрити меню</span>
           </button>
@@ -149,9 +162,9 @@ function Drawer({ section }: { section: Section }) {
             Подати заявку
           </a>
           <p className="drawer__status small" data-open-status>
-            {hoursRows(business.hours).map((r) => `${r.days} ${r.time}`).join(", ")}
+            {hoursLine()}
           </p>
-          <p className="small muted">
+          <p className="small">
             {business.address.street}, {business.address.city}
           </p>
         </div>
@@ -162,58 +175,86 @@ function Drawer({ section }: { section: Section }) {
 
 function Footer() {
   const rows = hoursRows(business.hours);
+  const credits = photoCredits();
   return (
     <footer className="site-footer">
-      <div className="wrap site-footer__grid">
-        <div className="site-footer__brand">
-          <a href="/" aria-label={`${business.name} — на головну`}>
-            <Logo />
-          </a>
-          <p className="small muted">{business.summary}</p>
+      <div className="container">
+        <div className="site-footer__grid">
+          <div className="site-footer__brand">
+            <a href="/" aria-label={`${business.name}, на головну`}>
+              <Logo />
+            </a>
+            <p className="small">{business.summary}</p>
+          </div>
+          <div>
+            <h2 className="site-footer__title">Послуги</h2>
+            <ul role="list" className="site-footer__links">
+              {categories.map((c) => (
+                <li>
+                  <a href={`/services#${c.id}`}>{c.name}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="site-footer__title">Розділи</h2>
+            <ul role="list" className="site-footer__links">
+              <li><a href="/pricing">Ціни</a></li>
+              <li><a href="/about">Про нас</a></li>
+              <li><a href="/contacts">Контакти</a></li>
+              <li><a href="/booking">Онлайн-заявка</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="site-footer__title">Години</h2>
+            <dl className="hours hours--compact">
+              {rows.map((r) => (
+                <div>
+                  <dt>{r.days}</dt>
+                  <dd>{r.time}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div>
+            <h2 className="site-footer__title">Адреса</h2>
+            <p className="small">
+              {business.address.street}
+              <br />
+              {business.address.city}
+            </p>
+            {business.phone ? (
+              <p className="small">
+                <a href={business.phone.href}>{business.phone.label}</a>
+              </p>
+            ) : null}
+            {business.email ? (
+              <p className="small">
+                <a href={business.email.href}>{business.email.label}</a>
+              </p>
+            ) : null}
+          </div>
         </div>
-        <div>
-          <h2 className="site-footer__title">Розділи</h2>
-          <ul role="list" className="site-footer__links">
-            <li><a href="/services">Послуги</a></li>
-            <li><a href="/pricing">Ціни</a></li>
-            <li><a href="/about">Про нас</a></li>
-            <li><a href="/contacts">Контакти</a></li>
-            <li><a href="/booking">Онлайн-заявка</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="site-footer__title">Години роботи</h2>
-          <dl className="hours hours--compact">
-            {rows.map((r) => (
-              <div>
-                <dt>{r.days}</dt>
-                <dd className="num">{r.time}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-        <div>
-          <h2 className="site-footer__title">Адреса</h2>
-          <p className="small">
-            {business.address.street}
-            <br />
-            {business.address.city}
+        <div className="site-footer__base">
+          {credits.length ? (
+            <p data-credits>
+              Фотографії:{" "}
+              {credits.map((c, i) => (
+                <span>
+                  {i > 0 ? ", " : ""}
+                  <a href={c.page} rel="noopener">
+                    {c.author}
+                  </a>{" "}
+                  ({c.license}, Wikimedia Commons)
+                </span>
+              ))}
+              .
+            </p>
+          ) : null}
+          <p>
+            © {new Date().getFullYear()} {business.name}. Ціни на сайті: вартість робіт без запчастин, якщо не вказано інше.
           </p>
-          {business.phone ? (
-            <p className="small">
-              <a className="link" href={business.phone.href}>{business.phone.label}</a>
-            </p>
-          ) : null}
-          {business.email ? (
-            <p className="small">
-              <a className="link" href={business.email.href}>{business.email.label}</a>
-            </p>
-          ) : null}
         </div>
-      </div>
-      <div className="wrap site-footer__base small muted">
-        <p>© {new Date().getFullYear()} {business.name}</p>
-        <p>Ціни на сайті — вартість робіт без запчастин, якщо не вказано інше.</p>
       </div>
     </footer>
   );

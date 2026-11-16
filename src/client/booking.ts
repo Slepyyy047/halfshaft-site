@@ -114,6 +114,13 @@ function loadDraft(): Draft {
     if (sym && !d.symptoms.includes(sym)) d.symptoms = [...d.symptoms, sym];
     d.step = 1;
   }
+  // a preferred time picked on the home page
+  const date = params.get("date"), time = params.get("time");
+  if (date && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    d.date = date;
+    if (time && /^\d{2}:\d{2}$/.test(time)) d.time = time;
+    d.step = 1;
+  }
   if (params.get("from") === "selection") {
     const sel = readSelection().filter((s) => priceById.has(s.id));
     if (sel.length) {
@@ -213,9 +220,9 @@ function validate(step: number): boolean {
     errs.make = draft.make.trim() ? null : "Вкажіть марку авто.";
     errs.model = draft.model.trim() ? null : "Вкажіть модель авто.";
     const y = draft.year.trim();
-    errs.year = !y || (/^\d{4}$/.test(y) && +y >= 1975 && +y <= currentYear + 1) ? null : `Рік — чотири цифри, від 1975 до ${currentYear + 1}.`;
+    errs.year = !y || (/^\d{4}$/.test(y) && +y >= 1975 && +y <= currentYear + 1) ? null : `Рік: чотири цифри, від 1975 до ${currentYear + 1}.`;
     const m = draft.mileage.replace(/[\s ]/g, "");
-    errs.mileage = !m || (/^\d{1,7}$/.test(m) && +m <= 2_000_000) ? null : "Пробіг — лише цифри, наприклад 148000.";
+    errs.mileage = !m || (/^\d{1,7}$/.test(m) && +m <= 2_000_000) ? null : "Пробіг: лише цифри, наприклад 148000.";
     const vin = draft.vin.trim().toUpperCase();
     errs.vin = !vin || /^[A-HJ-NPR-Z0-9]{17}$/.test(vin) ? null : "VIN має 17 символів: латинські літери (без I, O, Q) і цифри.";
   }
@@ -424,7 +431,7 @@ function renderSymptomHint() {
   const sp = startingPrice(s.slug, DATA.prices);
   box.hidden = false;
   box.innerHTML = `<p class="price-hint__title">З чого почнемо</p><p>${esc(s.name)}${
-    sp ? ` — <strong class="num">${esc(priceText(sp))}</strong>` : ""
+    sp ? `: <strong class="num">${esc(priceText(sp))}</strong>` : ""
   }.</p><p class="small muted">Ціну ремонту назвемо після огляду, до початку робіт.</p>`;
 }
 
@@ -446,7 +453,7 @@ function renderCarry() {
   const est = estimate(lines);
   const sum = estimateText(est, uah, formatAmount);
   $("[data-carry-sum]").textContent =
-    (sum ? `Орієнтовно за роботи: ${sum}.` : "") + (est.quoted.length ? ` Ще ${est.quoted.length} — після огляду.` : "") + " Без запчастин.";
+    (sum ? `Орієнтовно за роботи: ${sum}.` : "") + (est.quoted.length ? ` Ще ${est.quoted.length} після огляду.` : "") + " Без запчастин.";
 }
 
 // ------------------------------------------------------------------ step 3: date & slots
@@ -466,7 +473,7 @@ function renderSlots() {
   help.textContent = d && !problem ? `Обрано: ${formatDateLong(d)}. Години роботи: ${hoursText}.` : `Години роботи: ${hoursText}.`;
   if (problem) {
     box.innerHTML = `<p class="small muted">${
-      problem === "empty" ? "Спершу оберіть дату — покажемо вільний час." : "На цю дату вибрати час не можна. Оберіть інший день."
+      problem === "empty" ? "Спершу оберіть дату, і ми покажемо вільний час." : "На цю дату вибрати час не можна. Оберіть інший день."
     }</p>`;
     if (d && problem !== "empty") validateDateOnly();
     return;
@@ -504,7 +511,7 @@ function workLines(): { title: string; lines: string[]; price: string } {
     return {
       title: "Опис проблеми",
       lines,
-      price: first && sp ? `${serviceBySlug.get(first.service)!.name}: ${priceText(sp)}; ремонт — після огляду` : "Після огляду",
+      price: first && sp ? `${serviceBySlug.get(first.service)!.name}: ${priceText(sp)}; ремонт після огляду` : "Після огляду",
     };
   }
   const lines: string[] = [];
@@ -512,7 +519,7 @@ function workLines(): { title: string; lines: string[]; price: string } {
   for (const l of priceLines) lines.push(l.qty > 1 ? `${l.item.name} × ${l.qty}` : l.item.name);
   const svc = serviceBySlug.get(draft.service);
   if (svc) lines.push(svc.name);
-  let price = "—";
+  let price = "";
   if (priceLines.length) {
     const est = estimate(priceLines);
     const sum = estimateText(est, uah, formatAmount);
@@ -520,7 +527,7 @@ function workLines(): { title: string; lines: string[]; price: string } {
     if (svc) price += `, плюс ${svc.name.toLowerCase()}`;
   } else if (svc) {
     const sp = startingPrice(svc.slug, DATA.prices);
-    price = sp ? priceText(sp) : "—";
+    price = sp ? priceText(sp) : "";
   }
   return { title: "Послуга", lines, price };
 }
@@ -537,7 +544,7 @@ function timeText() {
 
 function renderOverview() {
   const w = workLines();
-  const set = (k: string, v: string) => ($(`[data-ov="${k}"]`).textContent = v || "—");
+  const set = (k: string, v: string) => ($(`[data-ov="${k}"]`).textContent = v || "не вказано");
   set("service", w.lines.join("; "));
   set("price", w.lines.length ? w.price : "");
   set("car", carText());
@@ -658,8 +665,8 @@ async function submit() {
     const storage = (err as Error).message === "storage";
     showSubmitError(
       storage
-        ? "Не вдалося зберегти заявку: браузер не дає доступу до сховища (наприклад, у приватному режимі або коли воно заповнене). Дані у формі збережено — спробуйте ще раз або відкрийте сайт у звичайному вікні."
-        : "Не вдалося надіслати заявку. Перевірте з'єднання з інтернетом і спробуйте ще раз — дані у формі збережено."
+        ? "Не вдалося зберегти заявку: браузер не дає доступу до сховища (наприклад, у приватному режимі або коли воно заповнене). Дані у формі збережено: спробуйте ще раз або відкрийте сайт у звичайному вікні."
+        : "Не вдалося надіслати заявку. Перевірте з'єднання з інтернетом і спробуйте ще раз: дані у формі збережено."
     );
     submitting = false;
     submitBtn.disabled = false;

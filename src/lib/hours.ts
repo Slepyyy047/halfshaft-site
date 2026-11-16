@@ -19,7 +19,7 @@ export function daysLabel(days: Weekday[]): string {
   const idx = ORDER.map((d, i) => (days.includes(d) ? i : -1)).filter((i) => i >= 0);
   if (!idx.length) return "";
   const contiguous = idx.every((v, i) => i === 0 || v === idx[i - 1] + 1);
-  if (contiguous && idx.length > 1) return `${DAY_SHORT[ORDER[idx[0]]]}–${DAY_SHORT[ORDER[idx[idx.length - 1]]]}`;
+  if (contiguous && idx.length > 1) return `${DAY_SHORT[ORDER[idx[0]]]}-${DAY_SHORT[ORDER[idx[idx.length - 1]]]}`;
   return idx.map((i) => DAY_SHORT[ORDER[i]]).join(", ");
 }
 
@@ -42,9 +42,9 @@ export function hoursRows(hours: OpeningHours[]) {
     }
     const first = ORDER[i], last = ORDER[j];
     rows.push({
-      days: i === j ? DAY_SHORT[first] : `${DAY_SHORT[first]}–${DAY_SHORT[last]}`,
-      daysLong: i === j ? DAY_LONG[first] : `${DAY_LONG[first]} – ${DAY_LONG[last]}`,
-      time: h ? `${showTime(h.open)}–${showTime(h.close)}` : "вихідний",
+      days: i === j ? DAY_SHORT[first] : `${DAY_SHORT[first]}-${DAY_SHORT[last]}`,
+      daysLong: i === j ? DAY_LONG[first] : `${DAY_LONG[first]} - ${DAY_LONG[last]}`,
+      time: h ? `${showTime(h.open)}-${showTime(h.close)}` : "вихідний",
       closed: !h,
     });
     i = j + 1;

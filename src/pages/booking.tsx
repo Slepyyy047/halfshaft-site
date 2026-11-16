@@ -55,13 +55,13 @@ export function BookingPage() {
       scripts={["booking"]}
     >
       <section className="page-head page-head--compact">
-        <div className="wrap">
-          <h1 className="display-2">Заявка на ремонт</h1>
+        <div className="container">
+          <h1>Заявка на ремонт</h1>
           <p className="lead">Чотири короткі кроки. Обов'язкові лише послуга або опис проблеми, марка й модель, бажаний час, ім'я і телефон.</p>
         </div>
       </section>
 
-      <div className="wrap booking" data-booking>
+      <div className="container booking" data-booking>
         <noscript>
           <div className="paper sheet booking__noscript">
             <p>Для онлайн-заявки потрібен увімкнений JavaScript. Ви також можете приїхати в майстерню в робочі години.</p>
@@ -81,7 +81,7 @@ export function BookingPage() {
             ))}
           </ol>
 
-          <form className="paper sheet booking__form" novalidate data-form autocomplete="on">
+          <form className="paper plate booking__form" novalidate data-form autocomplete="on">
             {/* ---------------- Step 1 */}
             <fieldset className="step" data-step="1" aria-labelledby="s1-title">
               <legend className="sr-only">Крок 1 з 4: послуга</legend>
@@ -93,14 +93,14 @@ export function BookingPage() {
                   <input type="radio" name="mode" value="service" checked />
                   <span className="mode__card">
                     <span className="mode__name">Знаю, яка послуга потрібна</span>
-                    <span className="mode__hint small">Оберіть зі списку — покажемо ціну</span>
+                    <span className="mode__hint small">Оберіть зі списку, і ми покажемо ціну</span>
                   </span>
                 </label>
                 <label className="mode__option">
                   <input type="radio" name="mode" value="symptom" />
                   <span className="mode__card">
                     <span className="mode__name">Знаю лише, що турбує</span>
-                    <span className="mode__hint small">Опишіть симптом — почнемо з огляду</span>
+                    <span className="mode__hint small">Опишіть симптом, і ми почнемо з огляду</span>
                   </span>
                 </label>
               </div>
@@ -282,7 +282,7 @@ export function BookingPage() {
               <fieldset className="field" data-slots-field>
                 <legend className="field__label">Час</legend>
                 <div className="slots" data-slots>
-                  <p className="small muted">Спершу оберіть дату — покажемо вільний час.</p>
+                  <p className="small muted">Спершу оберіть дату, і ми покажемо вільний час.</p>
                 </div>
                 <Err id="time" />
               </fieldset>
@@ -381,27 +381,27 @@ export function BookingPage() {
             <dl className="overview__list">
               <div>
                 <dt>Робота</dt>
-                <dd data-ov="service">—</dd>
+                <dd data-ov="service">не вказано</dd>
               </div>
               <div>
                 <dt>Орієнтовно</dt>
-                <dd data-ov="price">—</dd>
+                <dd data-ov="price">не вказано</dd>
               </div>
               <div>
                 <dt>Авто</dt>
-                <dd data-ov="car">—</dd>
+                <dd data-ov="car">не вказано</dd>
               </div>
               <div>
                 <dt>Бажаний час</dt>
-                <dd data-ov="time">—</dd>
+                <dd data-ov="time">не вказано</dd>
               </div>
               <div>
                 <dt>Контакт</dt>
-                <dd data-ov="contact">—</dd>
+                <dd data-ov="contact">не вказано</dd>
               </div>
             </dl>
             <p className="overview__note small">
-              Ціни — за прайсом, без запчастин. Остаточну вартість узгодимо після огляду, до початку робіт.
+              Ціни за прайсом, без запчастин. Остаточну вартість узгодимо після огляду, до початку робіт.
             </p>
           </details>
         </aside>

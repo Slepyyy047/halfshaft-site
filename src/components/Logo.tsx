@@ -5,7 +5,7 @@ import paths from "../../assets/brand/logo-paths.json";
 export function Logo({ className = "logo" }: { className?: string }) {
   return (
     <svg className={className} viewBox={`0 0 ${paths.width} 48`} role="img" aria-label="Halfshaft" focusable="false">
-      <g fill="var(--teal)">{raw(paths.mark)}</g>
+      <g className="logo__mark">{raw(paths.mark)}</g>
       <path
         fill="currentColor"
         transform={`translate(${paths.wordX} ${24 - 17 / 2}) scale(${paths.wordScale})`}

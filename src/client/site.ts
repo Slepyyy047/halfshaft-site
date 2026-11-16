@@ -1,12 +1,13 @@
 // Shared behaviour on every page: fixed header state, mobile drawer, opening status, entrance reveals.
 import { business } from "../data/business";
-import { openStatus } from "../lib/hours";
+import { openStatus, slotsFor, kyivNow, addDays, dayOf } from "../lib/hours";
 
 const reduceMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 // ------------------------------------------------------------------ header
 const header = document.querySelector<HTMLElement>("[data-header]");
-const onScroll = () => header?.classList.toggle("is-scrolled", window.scrollY > 8);
+// the banner (today's hours, the address) retracts once the page scrolls; the bar stays
+const onScroll = () => header?.classList.toggle("is-condensed", window.scrollY > 36);
 onScroll();
 window.addEventListener("scroll", onScroll, { passive: true });
 
@@ -114,40 +115,35 @@ window.addEventListener("pageshow", (e) => {
   if ((e as PageTransitionEvent).persisted) closeDrawer({ restore: false });
 });
 
-// ------------------------------------------------------------------ reveals
-// Only elements below the fold at load get the entrance; nothing visible is hidden.
-if ("IntersectionObserver" in window && !reduceMotion()) {
-  const items = [...document.querySelectorAll<HTMLElement>("[data-reveal]")].filter(
-    (el) => el.getBoundingClientRect().top > window.innerHeight * 0.92
-  );
-  const io = new IntersectionObserver(
-    (entries) => {
-      for (const en of entries) {
-        if (!en.isIntersecting) continue;
-        const el = en.target as HTMLElement;
-        el.classList.add("is-revealed");
-        io.unobserve(el);
-      }
-    },
-    { rootMargin: "0px 0px -8% 0px" }
-  );
-  // Safety net for fast jumps (anchors, find-in-page, printing): reveal anything already passed.
-  const sweep = () => {
-    for (const el of items) {
-      if (!el.classList.contains("is-revealed") && el.getBoundingClientRect().top < window.innerHeight) {
-        el.classList.add("is-revealed");
-        io.unobserve(el);
-      }
+// ------------------------------------------------------------------ home: the week strip and the next times to request
+const week = document.querySelector<HTMLElement>("[data-week]");
+if (week) {
+  const today = kyivNow().day;
+  week.querySelector(`[data-day="${today}"]`)?.classList.add("is-today");
+  week.querySelector(`[data-day="${today}"]`)?.setAttribute("aria-current", "date");
+}
+const timesBox = document.querySelector<HTMLElement>("[data-next-times]");
+if (timesBox) {
+  const now = kyivNow();
+  const DAY = ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  const out: { date: string; time: string }[] = [];
+  for (let i = 0; i <= business.booking.horizonDays && out.length < 6; i++) {
+    const date = addDays(now.date, i);
+    // spread the suggestions: at most three per day
+    for (const time of slotsFor(date, business.hours, business.booking).filter((_, k) => k % 4 === 0).slice(0, 3)) {
+      if (out.length < 6) out.push({ date, time });
     }
+  }
+  const label = (iso: string) => {
+    if (iso === now.date) return "Сьогодні";
+    if (iso === addDays(now.date, 1)) return "Завтра";
+    const [, m, d] = iso.split("-");
+    return `${DAY[dayOf(iso)]}, ${Number(d)}.${m}`;
   };
-  let raf = 0;
-  window.addEventListener("scroll", () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(sweep); }, { passive: true });
-  window.addEventListener("beforeprint", () => items.forEach((el) => el.classList.add("is-revealed")));
-  items.forEach((el) => {
-    const group = el.closest("[data-reveal-group]");
-    const idx = group ? [...group.querySelectorAll("[data-reveal]")].indexOf(el) : 0;
-    el.style.setProperty("--i", String(idx % 4));
-    el.classList.add("reveal-pending");
-    io.observe(el);
-  });
+  timesBox.innerHTML = out
+    .map(
+      (t) =>
+        `<a class="time-btn" href="/booking?date=${t.date}&amp;time=${t.time}"><span class="time-btn__day">${label(t.date)}</span><span class="time-btn__time">${t.time.replace(/^0/, "")}</span></a>`
+    )
+    .join("");
 }

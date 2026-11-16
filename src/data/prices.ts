@@ -11,8 +11,8 @@ export const prices: PriceItem[] = [
   { id: "filter-air", service: "oil-change", name: "Заміна повітряного фільтра", price: { kind: "fixed", amount: 150 }, parts: "excluded" },
   { id: "filter-cabin", service: "oil-change", name: "Заміна салонного фільтра", price: { kind: "from", amount: 200 }, parts: "excluded", note: "Залежить від доступу до фільтра" },
   { id: "filter-fuel", service: "scheduled-service", name: "Заміна паливного фільтра", price: { kind: "from", amount: 400 }, parts: "excluded" },
-  { id: "spark-plugs", service: "scheduled-service", name: "Заміна свічок запалювання, 4 шт.", price: { kind: "from", amount: 400 }, unit: "set", parts: "excluded", note: "V-подібні двигуни — дорожче через доступ" },
-  { id: "service-regular", service: "scheduled-service", name: "ТО за регламентом виробника", price: { kind: "from", amount: 1200 }, unit: "visit", parts: "excluded", note: "Точна сума — за VIN і пробігом" },
+  { id: "spark-plugs", service: "scheduled-service", name: "Заміна свічок запалювання, 4 шт.", price: { kind: "from", amount: 400 }, unit: "set", parts: "excluded", note: "V-подібні двигуни: дорожче через доступ" },
+  { id: "service-regular", service: "scheduled-service", name: "ТО за регламентом виробника", price: { kind: "from", amount: 1200 }, unit: "visit", parts: "excluded", note: "Точна сума: за VIN і пробігом" },
   { id: "gearbox-oil", service: "scheduled-service", name: "Заміна оливи в механічній КПП", price: { kind: "fixed", amount: 500 }, parts: "excluded" },
   { id: "atf-change", service: "scheduled-service", name: "Заміна оливи в АКПП або варіаторі", price: { kind: "range", min: 900, max: 1800 }, parts: "excluded", note: "Залежить від типу коробки й способу заміни" },
   { id: "timing-belt-kit", service: "timing-belt", name: "Заміна ременя ГРМ з роликами", price: { kind: "range", min: 2800, max: 6500 }, parts: "excluded" },
@@ -26,7 +26,7 @@ export const prices: PriceItem[] = [
 
   // Гальма
   { id: "pads-front", service: "brake-pads", name: "Заміна передніх гальмівних колодок", price: { kind: "fixed", amount: 650 }, unit: "axle", parts: "excluded", featured: true },
-  { id: "pads-rear-disc", service: "brake-pads", name: "Заміна задніх колодок, дискові гальма", price: { kind: "fixed", amount: 750 }, unit: "axle", parts: "excluded", note: "З електроручником — через сканер, ціна та сама" },
+  { id: "pads-rear-disc", service: "brake-pads", name: "Заміна задніх колодок, дискові гальма", price: { kind: "fixed", amount: 750 }, unit: "axle", parts: "excluded", note: "З електроручником: через сканер, ціна та сама" },
   { id: "pads-rear-drum", service: "brake-pads", name: "Заміна задніх колодок, барабанні гальма", price: { kind: "from", amount: 1100 }, unit: "axle", parts: "excluded" },
   { id: "discs-pads", service: "brake-discs", name: "Заміна гальмівних дисків і колодок", price: { kind: "fixed", amount: 1300 }, unit: "axle", parts: "excluded" },
   { id: "brake-fluid", service: "brake-fluid", name: "Заміна гальмівної рідини з прокачуванням", price: { kind: "fixed", amount: 750 }, unit: "visit", parts: "excluded" },
@@ -46,10 +46,10 @@ export const prices: PriceItem[] = [
   { id: "alignment-2", service: "wheel-alignment", name: "Розвал-сходження, дві осі", price: { kind: "fixed", amount: 1100 }, featured: true },
 
   // Шини
-  { id: "tires-r15", service: "tire-fitting", name: "Шиномонтаж комплекту R13–R15", price: { kind: "fixed", amount: 800 }, unit: "set", parts: "included" },
-  { id: "tires-r17", service: "tire-fitting", name: "Шиномонтаж комплекту R16–R17", price: { kind: "fixed", amount: 1000 }, unit: "set", parts: "included", featured: true },
-  { id: "tires-r19", service: "tire-fitting", name: "Шиномонтаж комплекту R18–R19", price: { kind: "fixed", amount: 1300 }, unit: "set", parts: "included" },
-  { id: "tires-r20", service: "tire-fitting", name: "Шиномонтаж комплекту R20 і більше", price: { kind: "from", amount: 1600 }, unit: "set", parts: "included", note: "Низький профіль і run-flat — дорожче" },
+  { id: "tires-r15", service: "tire-fitting", name: "Шиномонтаж комплекту R13-R15", price: { kind: "fixed", amount: 800 }, unit: "set", parts: "included" },
+  { id: "tires-r17", service: "tire-fitting", name: "Шиномонтаж комплекту R16-R17", price: { kind: "fixed", amount: 1000 }, unit: "set", parts: "included", featured: true },
+  { id: "tires-r19", service: "tire-fitting", name: "Шиномонтаж комплекту R18-R19", price: { kind: "fixed", amount: 1300 }, unit: "set", parts: "included" },
+  { id: "tires-r20", service: "tire-fitting", name: "Шиномонтаж комплекту R20 і більше", price: { kind: "from", amount: 1600 }, unit: "set", parts: "included", note: "Низький профіль і run-flat: дорожче" },
   { id: "balance-1", service: "tire-fitting", name: "Балансування колеса", price: { kind: "fixed", amount: 120 }, unit: "wheel", parts: "included" },
   { id: "wheel-swap", service: "tire-fitting", name: "Перестановка коліс у зборі", price: { kind: "fixed", amount: 400 }, unit: "set" },
   { id: "tire-storage", service: "tire-fitting", name: "Сезонне зберігання шин", price: { kind: "fixed", amount: 1200 }, unit: "season", note: "Комплект із чотирьох шин або коліс" },
@@ -63,7 +63,7 @@ export const prices: PriceItem[] = [
   { id: "ac-clean", service: "ac-service", name: "Антибактеріальна обробка випарника", price: { kind: "fixed", amount: 450 }, parts: "included" },
   { id: "coolant", service: "cooling-system", name: "Заміна антифризу", price: { kind: "fixed", amount: 900 }, unit: "visit", parts: "excluded" },
   { id: "cooling-pressure", service: "cooling-system", name: "Перевірка системи охолодження тиском", price: { kind: "fixed", amount: 400 } },
-  { id: "water-pump", service: "cooling-system", name: "Заміна помпи", price: { kind: "from", amount: 1500 }, parts: "excluded", note: "Якщо помпу приводить ремінь ГРМ — разом із ним" },
+  { id: "water-pump", service: "cooling-system", name: "Заміна помпи", price: { kind: "from", amount: 1500 }, parts: "excluded", note: "Якщо помпу приводить ремінь ГРМ: разом із ним" },
   { id: "radiator", service: "cooling-system", name: "Заміна радіатора охолодження", price: { kind: "from", amount: 1400 }, parts: "excluded" },
 
   // Гібриди

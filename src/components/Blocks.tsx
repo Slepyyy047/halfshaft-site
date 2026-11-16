@@ -70,12 +70,10 @@ export function SpecPlate() {
 
 export function CtaBand({ title, text, href = "/booking", label = "Подати заявку", children }: { title: string; text: string; href?: string; label?: string; children?: Child }) {
   return (
-    <section className="cta-band" aria-labelledby="cta-title">
-      <div className="wrap cta-band__inner">
+    <section className="cta-band band--ink" aria-labelledby="cta-title">
+      <div className="container cta-band__inner">
         <div className="cta-band__text">
-          <h2 className="h2" id="cta-title">
-            {title}
-          </h2>
+          <h2 id="cta-title">{title}</h2>
           <p className="lead">{text}</p>
         </div>
         <div className="actions">

@@ -16,7 +16,7 @@ export function priceText(p: Price): string {
     case "from":
       return `від${NBSP}${uah(p.amount)}`;
     case "range":
-      return `${formatAmount(p.min)}–${uah(p.max)}`;
+      return `${formatAmount(p.min)}-${uah(p.max)}`;
     case "quote":
       return "Після огляду";
   }

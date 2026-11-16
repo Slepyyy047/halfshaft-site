@@ -17,9 +17,9 @@ export function PricingPage() {
       scripts={["pricing"]}
     >
       <section className="page-head">
-        <div className="wrap page-head__grid">
+        <div className="container page-head__grid">
           <div>
-            <h1 className="display-2">Ціни</h1>
+            <h1>Ціни</h1>
             <p className="lead">
               Вартість роботи в гривнях. Запчастини оплачуються окремо, якщо в рядку не вказано інше. Остаточну суму узгоджуємо після огляду, до початку робіт.
             </p>
@@ -30,7 +30,7 @@ export function PricingPage() {
 
       <div className="pricing" data-pricing>
         <div className="pricing__bar" data-js-only>
-          <div className="wrap pricing__bar-inner">
+          <div className="container pricing__bar-inner">
             <div className="search">
               <label className="sr-only" htmlFor="price-search">
                 Пошук у прайсі
@@ -63,9 +63,9 @@ export function PricingPage() {
           </div>
         </div>
 
-        <div className="wrap pricing__body">
+        <div className="container pricing__body">
           <p className="pricing__status small muted" role="status" aria-live="polite" data-result-status></p>
-          <div className="paper sheet sheet--pricing">
+          <div className="plate sheet sheet--pricing">
             {groups.map((g) => (
               <section className="price-group" data-group={g.cat.id} aria-labelledby={`g-${g.cat.id}`}>
                 <h2 className="price-group__title" id={`g-${g.cat.id}`}>
@@ -79,7 +79,7 @@ export function PricingPage() {
               </section>
             ))}
             <div className="empty" data-empty hidden>
-              <h2 className="h3">Нічого не знайшли</h2>
+              <h2>Нічого не знайшли</h2>
               <p data-empty-text>Спробуйте інше слово або скиньте фільтри.</p>
               <div className="actions">
                 <button type="button" className="btn btn--primary" data-reset>
@@ -92,7 +92,7 @@ export function PricingPage() {
             </div>
           </div>
           <p className="pricing__foot small muted">
-            Ціни дійсні для легкових авто й кросоверів. Для складних компонувань вартість може відрізнятися — назвемо її до запису.
+            Ціни дійсні для легкових авто й кросоверів. Для складних компонувань вартість може відрізнятися: назвемо її до запису.
           </p>
         </div>
       </div>

@@ -1,3 +1,9 @@
-@import "./base.css";
-@import "./components.css";
-@import "./pages.css";
+/* Hallmark · shape: Marquee Hero · genre: editorial · theme: Formwork (deal 2/3, seed independent-neighbourhood-car-repair-2d69·7cad802c·2026-11-16·r0) · redesign: full · draw: d581c2
+ * hero: Ledge · nav: banner over a retracting bar · footer: index columns · imagery: photographs 3 (Wikimedia Commons, slots) · signature: the workshop on the lift, black and white, with the name cast over it · formwork: cast
+ * axes: mid/display-condensed/cool · posture: restrained · contrast: pass · fold: pass · brand: Halfshaft lockup and the teal signal kept · v2.0.0 */
+/* Hallmark · pre-emit critique: P3 H3 E3 S3 R3 V3 · weakest: S, the service and booking pages carry no photograph, so a cast plate holds the price at figure size instead */
+/* Hallmark · waive 37 · the body face is IBM Plex Sans, not the theme's Archivo · Archivo has no Cyrillic and every page is Ukrainian */
+/* Hallmark · waive 8 · the section order follows the kept site · a redesign keeps the content sequence and recomposes it */
+@import url("./tokens.css");
+@import url("./base.css");
+@import url("./site.css");

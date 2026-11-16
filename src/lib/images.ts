@@ -8,8 +8,15 @@ export interface ImageVariant {
   pattern: string;
 }
 
+export interface ImageCredit {
+  author: string;
+  license: string;
+  page: string;
+}
+
 export interface ImageEntry {
   name: string;
+  credit?: ImageCredit;
   main: ImageVariant;
   /** Optional art-directed crop for narrow screens */
   narrow?: ImageVariant;
@@ -25,6 +32,14 @@ export function getImage(name: string): ImageEntry {
   const e = manifest[name];
   if (!e) throw new Error(`Image "${name}" is missing from assets/images`);
   return e;
+}
+
+/** Credits of every library photograph in use, for the footer line */
+export function photoCredits(): ImageCredit[] {
+  const seen = new Set<string>();
+  return Object.values(manifest)
+    .map((e) => e.credit)
+    .filter((c): c is ImageCredit => Boolean(c) && !seen.has(c!.page) && Boolean(seen.add(c!.page)));
 }
 
 export const srcset = (v: ImageVariant) => v.widths.map((w) => `${v.pattern.replace("{w}", String(w))} ${w}w`).join(", ");

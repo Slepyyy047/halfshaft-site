@@ -7,7 +7,7 @@ import { daysLabel, showTime, toMin, fromMin } from "../lib/hours";
 
 export function ContactsPage() {
   const lastSlots = business.hours.map(
-    (h) => `${daysLabel(h.days)} — о ${showTime(fromMin(toMin(h.close) - business.booking.lastSlotBeforeCloseMinutes))}`
+    (h) => `${daysLabel(h.days)} о ${showTime(fromMin(toMin(h.close) - business.booking.lastSlotBeforeCloseMinutes))}`
   );
   const hasDirect = Boolean(business.phone || business.email || business.mapUrl || business.messengers.length);
   return (
@@ -18,15 +18,15 @@ export function ContactsPage() {
       section="contacts"
     >
       <section className="page-head">
-        <div className="wrap">
-          <h1 className="display-2">Контакти</h1>
-          <p className="lead">Запис — через онлайн-заявку. Оберіть послугу й бажаний час, а на місці вас зустріне адміністратор.</p>
+        <div className="container">
+          <h1>Контакти</h1>
+          <p className="lead">Запис через онлайн-заявку. Оберіть послугу й бажаний час, а на місці вас зустріне адміністратор.</p>
         </div>
       </section>
 
-      <div className="wrap contacts">
-        <section className="contacts__card paper" aria-labelledby="hours-title">
-          <h2 className="h3" id="hours-title">
+      <div className="container contacts">
+        <section className="contacts__card plate" aria-labelledby="hours-title">
+          <h2 id="hours-title">
             Години роботи
           </h2>
           <p className="contacts__status small" data-open-status></p>
@@ -44,7 +44,7 @@ export function ContactsPage() {
         </section>
 
         <section className="contacts__info" aria-labelledby="addr-title">
-          <h2 className="h3" id="addr-title">
+          <h2 id="addr-title">
             Адреса
           </h2>
           <p className="contacts__address">
@@ -56,7 +56,7 @@ export function ContactsPage() {
             </span>
           </p>
 
-          <h2 className="h3" id="arrive-title">
+          <h2 id="arrive-title">
             Як заїхати й залишити авто
           </h2>
           <ul className="bullets">
@@ -65,7 +65,7 @@ export function ContactsPage() {
             ))}
           </ul>
 
-          <h2 className="h3">Як з нами зв'язатися</h2>
+          <h2>Як з нами зв'язатися</h2>
           <ul role="list" className="contact-methods">
             <li>
               <a className="contact-method" href="/booking">
@@ -76,13 +76,13 @@ export function ContactsPage() {
             <li>
               <div className="contact-method contact-method--static">
                 <span className="contact-method__name">Особисто в майстерні</span>
-                <span className="small muted">Адміністратор на місці в робочі години. Огляд без запису — якщо є вільний пост.</span>
+                <span className="small muted">Адміністратор на місці в робочі години. Огляд без запису, якщо є вільний пост.</span>
               </div>
             </li>
           </ul>
           {hasDirect ? <ContactActions /> : null}
 
-          <h2 className="h3">Що обслуговуємо</h2>
+          <h2>Що обслуговуємо</h2>
           <ul className="bullets">
             {business.vehicleScope.serviced.map((s) => (
               <li>{s}</li>

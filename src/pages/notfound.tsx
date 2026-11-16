@@ -12,9 +12,9 @@ export function NotFoundPage() {
       noindex
     >
       <section className="page-head notfound">
-        <div className="wrap">
+        <div className="container">
           <p className="notfound__code num" aria-hidden="true">404</p>
-          <h1 className="display-2">Такої сторінки немає</h1>
+          <h1>Такої сторінки немає</h1>
           <p className="lead">Можливо, адреса змінилася або в посиланні помилка. Почніть з одного з розділів.</p>
           <ul role="list" className="notfound__links">
             <li>
