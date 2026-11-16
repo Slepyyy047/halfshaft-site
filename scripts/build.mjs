@@ -187,7 +187,7 @@ async function processImages(log) {
   for (const name of names) {
     const cfg = config[name] ?? {};
     const { file: src, credit } = await sourceFor(name, cfg, files, log);
-    const srcStat = await stat(src);
+    const srcKey = hash(await readFile(src));
     const fullBuf = await sharp(src).rotate().toBuffer();
     const full = await sharp(fullBuf).metadata();
     const variants = { main: { region: null, aspect: full.width / full.height } };
@@ -201,9 +201,9 @@ async function processImages(log) {
       const suffix = vName === "main" ? "" : `-${vName}`;
       for (const w of widths) {
         const outName = `${name}${suffix}-${w}.webp`;
-        const cached = path.join(IMG_CACHE, outName);
-        const fresh = existsSync(cached) && (await stat(cached)).mtimeMs > srcStat.mtimeMs;
-        if (!fresh) {
+        // the cache key is the source's content, so a swapped photo never reuses old renders
+        const cached = path.join(IMG_CACHE, `${srcKey}-${outName}`);
+        if (!existsSync(cached)) {
           let pipe = sharp(fullBuf);
           if (v.region) pipe = pipe.extract(v.region);
           await pipe.resize({ width: w }).webp({ quality: 78, effort: 5 }).toFile(cached);

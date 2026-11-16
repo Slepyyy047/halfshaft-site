@@ -1,3 +1,7 @@
 node_modules
 dist
 .cache
+
+.hallmark/old-styles
+.hallmark/before
+.hallmark/*.png
