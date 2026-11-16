@@ -199,8 +199,10 @@ async function processImages(log) {
       let widths = WIDTHS.filter((w) => w <= regionW);
       if (!widths.length) widths = [regionW];
       const suffix = vName === "main" ? "" : `-${vName}`;
+      // /img is served immutable, so the file name carries the source and crop: a new photo gets a new URL
+      const vKey = hash(srcKey + JSON.stringify(v.region)).slice(0, 8);
       for (const w of widths) {
-        const outName = `${name}${suffix}-${w}.webp`;
+        const outName = `${name}${suffix}-${vKey}-${w}.webp`;
         // the cache key is the source's content, so a swapped photo never reuses old renders
         const cached = path.join(IMG_CACHE, `${srcKey}-${outName}`);
         if (!existsSync(cached)) {
@@ -215,7 +217,7 @@ async function processImages(log) {
         width: top,
         height: Math.round(top / (v.region ? v.region.width / v.region.height : v.aspect)),
         widths,
-        pattern: `/img/${name}${suffix}-{w}.webp`,
+        pattern: `/img/${name}${suffix}-${vKey}-{w}.webp`,
       };
     }
     manifest[name].source = src;
