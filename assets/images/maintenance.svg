@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="1600" height="1200">
+<defs><radialGradient id="glow" cx="0.5" cy="0.5" r="0.65"><stop offset="0" stop-color="#232A2E"/><stop offset="1" stop-color="#171B1E"/></radialGradient></defs>
+<rect width="1600" height="1200" fill="url(#glow)"/>
+<path d="M48 0V1200M96 0V1200M144 0V1200M192 0V1200M240 0V1200M288 0V1200M336 0V1200M384 0V1200M432 0V1200M480 0V1200M528 0V1200M576 0V1200M624 0V1200M672 0V1200M720 0V1200M768 0V1200M816 0V1200M864 0V1200M912 0V1200M960 0V1200M1008 0V1200M1056 0V1200M1104 0V1200M1152 0V1200M1200 0V1200M1248 0V1200M1296 0V1200M1344 0V1200M1392 0V1200M1440 0V1200M1488 0V1200M1536 0V1200M1584 0V1200M0 48H1600M0 96H1600M0 144H1600M0 192H1600M0 240H1600M0 288H1600M0 336H1600M0 384H1600M0 432H1600M0 480H1600M0 528H1600M0 576H1600M0 624H1600M0 672H1600M0 720H1600M0 768H1600M0 816H1600M0 864H1600M0 912H1600M0 960H1600M0 1008H1600M0 1056H1600M0 1104H1600M0 1152H1600" stroke="#1F2528" stroke-width="1" fill="none" opacity="0.7"/>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round"><!-- oil filter -->
+     <path d="M480 430Q480 400 510 400H790Q820 400 820 430V880Q820 910 790 910H510Q480 910 480 880Z" stroke="#D9D5CC" stroke-width="3.5" fill="#1B2023"/>
+     <path d="M520 470L520 860" stroke="#D9D5CC" stroke-width="2"/><path d="M550 470L550 860" stroke="#D9D5CC" stroke-width="2"/><path d="M580 470L580 860" stroke="#D9D5CC" stroke-width="2"/><path d="M610 470L610 860" stroke="#D9D5CC" stroke-width="2"/><path d="M640 470L640 860" stroke="#D9D5CC" stroke-width="2"/><path d="M670 470L670 860" stroke="#D9D5CC" stroke-width="2"/><path d="M700 470L700 860" stroke="#D9D5CC" stroke-width="2"/><path d="M730 470L730 860" stroke="#D9D5CC" stroke-width="2"/><path d="M760 470L760 860" stroke="#D9D5CC" stroke-width="2"/><rect x="470" y="380" width="360" height="44" rx="10" stroke="#3CCFC0" stroke-width="3" fill="#232A2E"/>
+     <!-- jug -->
+     <path d="M960 520L1010 430H1180L1230 470V900Q1230 930 1200 930H990Q960 930 960 900Z" stroke="#D9D5CC" stroke-width="3.5" fill="#1B2023"/>
+     <rect x="1000" y="380" width="90" height="50" rx="8" stroke="#D9D5CC" stroke-width="3" fill="#232A2E"/>
+     <path d="M1230 520H1290Q1320 520 1320 550V700Q1320 730 1290 730H1230" stroke="#D9D5CC" stroke-width="3"/>
+     <path d="M970 700H1230" stroke="#69737A" stroke-width="2"/><path d="M960 700V900Q960 930 990 930H1200Q1230 930 1230 900V700" stroke="#3CCFC0" stroke-width="3"/>
+     <!-- dipstick -->
+     <path d="M300 260L300 980" stroke="#D9D5CC" stroke-width="4"/><circle cx="300" cy="230" r="30" stroke="#3CCFC0" stroke-width="3.5" fill="none"/>
+     <path d="M280 860H320M280 920H320" stroke="#3CCFC0" stroke-width="3"/><path d="M360 860V920M346 860H374M346 920H374" stroke="#69737A" stroke-width="2" stroke-dasharray="10 8"/>
+     <path d="M200 990H1420" stroke="#D9D5CC" stroke-width="3"/><path d="M200 996l-22 26M236 996l-22 26M272 996l-22 26M308 996l-22 26M344 996l-22 26M380 996l-22 26M416 996l-22 26M452 996l-22 26M488 996l-22 26M524 996l-22 26M560 996l-22 26M596 996l-22 26M632 996l-22 26M668 996l-22 26M704 996l-22 26M740 996l-22 26M776 996l-22 26M812 996l-22 26M848 996l-22 26M884 996l-22 26M920 996l-22 26M956 996l-22 26M992 996l-22 26M1028 996l-22 26M1064 996l-22 26M1100 996l-22 26M1136 996l-22 26M1172 996l-22 26M1208 996l-22 26M1244 996l-22 26M1280 996l-22 26M1316 996l-22 26M1352 996l-22 26M1388 996l-22 26" stroke="#69737A" stroke-width="1.5"/></g>
+</svg>
