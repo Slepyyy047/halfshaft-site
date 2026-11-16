@@ -169,7 +169,7 @@ p, figure, dl, dd { margin: 0; }
 .drawer__status { font-weight: 600; color: var(--color-ink); }
 
 /* ------------------------------------------------------------------ footer: index columns */
-.site-footer { background: var(--color-ink); color: var(--color-plate-ink); padding-block: var(--space-3xl) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px)); }
+.site-footer { background: var(--color-ink); color: var(--color-plate-ink); border-top: var(--rule-bar) solid var(--color-accent); padding-block: var(--space-2xl) calc(var(--space-xl) + env(safe-area-inset-bottom, 0px)); }
 .site-footer a { color: var(--color-plate-ink); }
 .site-footer__grid { display: grid; gap: var(--space-xl) var(--gap-columns); grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (min-width: 60rem) { .site-footer__grid { grid-template-columns: minmax(0, 4fr) repeat(3, minmax(0, 2fr)) minmax(0, 2fr); } }
@@ -208,9 +208,11 @@ p, figure, dl, dd { margin: 0; }
 .tag--ok .icon { color: var(--color-accent-deep); }
 .tag--plain { color: var(--color-ink-2); }
 
-.legend { display: grid; gap: var(--space-sm) var(--gap-columns); grid-template-columns: minmax(0, 1fr); font-size: var(--text-sm); }
-@media (min-width: 40rem) { .legend { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.legend > div { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: var(--space-sm); align-items: baseline; }
+.legend { display: grid; gap: var(--space-md) var(--gap-columns); grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); font-size: var(--text-sm); }
+/* term and note sit side by side when there is room, and stack in a narrow column */
+.legend > div { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-sm); align-items: baseline; }
+.legend dt { flex: 0 0 8.5rem; }
+.legend dd { flex: 1 1 12rem; min-width: 0; }
 .legend dd { color: var(--color-ink-2); line-height: 1.45; }
 
 .sheet { padding: var(--space-md) var(--space-lg); }
@@ -369,7 +371,7 @@ a.price-row__name:focus-visible { outline: 3px solid var(--color-focus); outline
 .close { display: grid; gap: var(--space-2xl) var(--gap-columns); align-items: center; }
 @media (min-width: 60rem) { .close { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); column-gap: calc(var(--gap-columns) + 80px); } }
 .close__text { display: grid; gap: var(--space-lg); }
-.close__photo { aspect-ratio: 4 / 5; min-height: 440px; border-color: var(--color-plate-ink); }
+.close__photo { aspect-ratio: 4 / 5; max-height: 34rem; justify-self: end; width: 100%; border-color: var(--color-plate-ink); }
 @media (max-width: 59.99rem) { .close__photo { min-height: 0; aspect-ratio: 4 / 3; } }
 
 /* ------------------------------------------------------------------ page heads */

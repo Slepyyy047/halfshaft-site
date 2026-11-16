@@ -176,6 +176,16 @@ function Drawer({ section }: { section: Section }) {
 function Footer() {
   const rows = hoursRows(business.hours);
   const credits = photoCredits();
+  // one author with several photos is credited once, each photo still linked to its page
+  function creditGroups(list: typeof credits) {
+    const groups: { author: string; license: string; pages: string[] }[] = [];
+    for (const c of list) {
+      const g = groups.find((x) => x.author === c.author && x.license === c.license);
+      if (g) g.pages.push(c.page);
+      else groups.push({ author: c.author, license: c.license, pages: [c.page] });
+    }
+    return groups;
+  }
   return (
     <footer className="site-footer">
       <div className="container">
@@ -238,14 +248,28 @@ function Footer() {
         <div className="site-footer__base">
           {credits.length ? (
             <p data-credits>
-              Фотографії:{" "}
-              {credits.map((c, i) => (
+              Фото з Wikimedia Commons:{" "}
+              {creditGroups(credits).map((g, i) => (
                 <span>
-                  {i > 0 ? ", " : ""}
-                  <a href={c.page} rel="noopener">
-                    {c.author}
-                  </a>{" "}
-                  ({c.license}, Wikimedia Commons)
+                  {i > 0 ? "; " : ""}
+                  {g.pages.length === 1 ? (
+                    <a href={g.pages[0]} rel="noopener">
+                      {g.author}
+                    </a>
+                  ) : (
+                    g.author
+                  )}
+                  , {g.license}
+                  {g.pages.length > 1
+                    ? g.pages.map((page, j) => (
+                        <span>
+                          {", "}
+                          <a href={page} rel="noopener">
+                            кадр {j + 1}
+                          </a>
+                        </span>
+                      ))
+                    : ""}
                 </span>
               ))}
               .
