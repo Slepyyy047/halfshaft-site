@@ -34,40 +34,6 @@ export function HoursTable({ className = "hours" }: { className?: string }) {
   );
 }
 
-/** «Табличка» з ключовими фактами: авто, години, адреса */
-export function SpecPlate() {
-  return (
-    <dl className="plate">
-      <div className="plate__row">
-        <dt>
-          <Icon name="car" />
-          <span>Авто</span>
-        </dt>
-        <dd>{business.vehicleScope.short}</dd>
-      </div>
-      <div className="plate__row">
-        <dt>
-          <Icon name="clock" />
-          <span>Години</span>
-        </dt>
-        <dd>
-          <span className="plate__status" data-open-status></span>
-          <span className="num">{hoursRows(business.hours).map((r) => `${r.days} ${r.time}`).join("; ")}</span>
-        </dd>
-      </div>
-      <div className="plate__row">
-        <dt>
-          <Icon name="pin" />
-          <span>Адреса</span>
-        </dt>
-        <dd>
-          {business.address.street}, {business.address.city}
-        </dd>
-      </div>
-    </dl>
-  );
-}
-
 export function CtaBand({ title, text, href = "/booking", label = "Подати заявку", children }: { title: string; text: string; href?: string; label?: string; children?: Child }) {
   return (
     <section className="cta-band band--ink" aria-labelledby="cta-title">

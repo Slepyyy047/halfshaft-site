@@ -10,7 +10,7 @@ const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "d
 const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8",
   ".json": "application/json", ".webmanifest": "application/manifest+json", ".svg": "image/svg+xml",
-  ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".woff": "font/woff", ".woff2": "font/woff2",
+  ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", 
   ".xml": "application/xml", ".txt": "text/plain; charset=utf-8", ".ico": "image/x-icon",
 };
 
